@@ -1,5 +1,4 @@
 const jwt=require("jsonwebtoken");
-const { createTestAccount } = require("nodemailer");
 require("dotenv").config();
 const User=require("../models/User");
 exports.auth=async (req,res,next)=>{
