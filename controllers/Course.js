@@ -29,9 +29,57 @@ exports.createCourse=async(req,res)=>{
             })
         }
         const thumbnailImage=await uploadImagetoCloudinary(thumbnail,process.env.FOLDER_NAME) ;
+        const newCourse=await Course.create({
+            courseName,courseDescription,instructor:instructorDetails._id,
+            whatYouWillLearn:whatYouWillLearn,price,
+            tag:tagDetails._id,
+            thumbnail:thumbnailImage.secure_url,
+        })
+        await User.findByIdAndUpdate(
+           { _id:instructorDetails._id},{
+                $push:{
+                    courses:newCourse._id,
+                }
+            },{
+                new:true,
+            }
+        )
+await Tag.findByIdAndUpdate(
+    { _id: tagDetails._id },
+    { $push: { courses: newCourse._id } },
+    { new: true }
+);
+
+        return res.status(200).json({
+            success:true,
+            message:'Course created successfully',
+            data:newCourse,
+        })
 
     }
     catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:'Error in creating new course',
+        })
 
     }
 }
+exports.showAllCourses=async(req,res)=>{
+    try{
+        const allCourses=await Course.find({},{courseName:true,price:true,thumbnail:true,instructor:true,ratingAndReviews:true,studentsEnrolled:true,}).populate("instructor").exec();
+        return res.status(200).json({
+            success:true,
+            message:'Courses shown successfully',
+            data:allCourses,
+        })
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:'Error in showing courses',
+        })
+
+    }}
