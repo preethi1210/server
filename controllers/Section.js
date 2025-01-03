@@ -64,19 +64,7 @@ exports.updateSection=async(req,res)=>{
 
 exports.deleteSection=async(req,res)=>{
     try{
-        const { sectionId, courseId } = req.body;
-        if (!sectionId || !courseId) {
-            return res.status(400).json({
-                success: false,
-                message: "Enter all fields",
-            });
-        }
-
-        await Course.findByIdAndUpdate(
-            courseId,
-            { $pull: { courseContent: sectionId } },
-            { new: true }
-        );
+        const { sectionId } = req.params;
 
         const deletedSection = await Section.findByIdAndDelete(sectionId);
 
