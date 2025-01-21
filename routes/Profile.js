@@ -1,25 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
+const {auth}=require("../middlewares/auth")
+const {deleteAccount,updateProfile,getAllUserDetails}=require("../controllers/Profile")
 // Define routes for user profiles
-router.get('/', (req, res) => {
-    res.send('Get all profiles');
-});
-
-router.get('/:id', (req, res) => {
-    res.send(`Get profile with ID: ${req.params.id}`);
-});
-
-router.post('/', (req, res) => {
-    res.send('Create a new profile');
-});
-
-router.put('/:id', (req, res) => {
-    res.send(`Update profile with ID: ${req.params.id}`);
-});
-
-router.delete('/:id', (req, res) => {
-    res.send(`Delete profile with ID: ${req.params.id}`);
-});
-
+router.delete("/deleteProfile",deleteAccount)
+router.put("updateProfile",auth,updateProfile)
+router.get("/getUserDetails",auth,getAllUserDetails)
 module.exports = router;
