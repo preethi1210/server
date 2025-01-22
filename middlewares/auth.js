@@ -60,3 +60,18 @@ exports.isInstructor=async (req,res,next)=>{
         }) 
     }
 }
+exports.isAdmin=async (req,res,next)=>{
+    try{
+        if(req.user.accountType!=="Admin")
+        {    return res.status(401).json({
+            success:false,
+            message:'This is protected route for admin only',
+        })}
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:'User role cannot be verified',
+        }) 
+    }
+}
