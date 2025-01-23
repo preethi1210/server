@@ -1,8 +1,8 @@
 const express=require("express");
-const userRoutes=require(".routes/User");
-const courseRoutes=require(".routes/Course");
-const profileRoutes=require(".routes/Profile");
-const paymentRoutes=require(".routes/Payments");
+const userRoutes=require("./routes/User");
+const courseRoutes=require("./routes/Course");
+const profileRoutes=require("./routes/Profile");
+const paymentRoutes=require("./routes/Payments");
 const database=require(".config/database");
 const cookieParser=require("cookie-parser");
 const cors=require("cors");

@@ -2,7 +2,7 @@ const OTP=require('../models/OTP');
 const { exists } = require('../models/User');
 const User=require('../models/User');
 const otpGenerator=require('otp-generator');
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const jwt=require("jsonwebtoken");
 require("dotenv").config();
 exports.sendOTP=async (req,res)=>{

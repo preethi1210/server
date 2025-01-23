@@ -92,3 +92,54 @@ exports.getAllUserDetails = async (req, res) => {
         });
     }
 };
+exports.updateDisplayPicture = async (req, res) => {
+    try {
+        const { displayPicture } = req.body;
+        const { id } = req.user;
+
+        if (!displayPicture) {
+            return res.status(400).json({
+                success: false,
+                message: 'Display picture URL is required.',
+            });
+        }
+
+        const userDetails = await User.findById(id);
+        const profileId = userDetails.additionalDetails;
+        const profileDetails = await Profile.findById(profileId);
+        
+        profileDetails.displayPicture = displayPicture;
+        await profileDetails.save();
+
+        return res.status(200).json({
+            success: true,
+            message: 'Display picture updated successfully.',
+            data: profileDetails,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Error in updating display picture.',
+        });
+    }
+};
+
+exports.getEnrolledCourses = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const userDetails = await User.findById(id).populate("enrolledCourses").exec();
+
+        return res.status(200).json({
+            success: true,
+            message: 'Enrolled courses fetched successfully.',
+            data: userDetails.enrolledCourses,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Error in fetching enrolled courses.',
+        });
+    }
+};
