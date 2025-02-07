@@ -53,7 +53,6 @@ exports.updateSubSection = async (req, res) => {
                 message: "SubSection ID is required",
             });
         }
-
         const subSectionDetails = await SubSection.findById(subSectionId);
         if (!subSectionDetails) {
             return res.status(404).json({

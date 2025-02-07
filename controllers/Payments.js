@@ -2,7 +2,7 @@ const {instance}=require("../config/razorpay")
 const Course=require("../models/Course")
 const User=require("../models/User")
 const mailSender=require("../utils/mailSender")
-const {courseEnrollmentEmail}=require("../mail/templates/courseEnrollmentEmail")
+const {courseEnrollmentEmail}=require("../mail/templates/courseEnrollment")
 const { default: mongoose } = require("mongoose")
 exports.capturePayment=async(req,res)=>{
     const {course_id}=req.body;

@@ -1,6 +1,7 @@
 exports.courseEnrollment = (email, name, courseName) => {
     return `<!DOCTYPE html>
     <html>
+    
     <head>
     <meta charset="UTF-8">
     <title>Course Enrollment Confirmation</title>
