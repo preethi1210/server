@@ -1,0 +1,17 @@
+@import "tailwindcss";
+html,body{
+    overflow-x: hidden;
+}
+@import "prismjs/themes/prism-okaidia.css";
+
+.token.doctype { color: yellow; } /* <!DOCTYPE html> in Yellow */
+.token.attr-name { color: pink; } /* href, rel, etc. in Pink */
+.token.attr-value { color: red; } /* Values inside quotes in Red */
+.token.tag { color: lightblue; } /* HTML tags */
+
+code {
+  font-family: "Fira Code", monospace;
+}
+.homepage_bg{
+  background:url("../src/assets/Images/bg_img_home.jpg");
+}
