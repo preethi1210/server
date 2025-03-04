@@ -7,14 +7,17 @@ import video1 from "../assets/videos/video1.mp4";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import TimeLineSection from "../components/core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection.JSX";
+import InstructorSection from "../components/core/HomePage/InstructorSection";
+import Footer from "../components/common/Footer"
+import ExploreMore from "../components/core/HomePage/ExploreMore"
 const Home = () => {
   return (
-    <div className="bg-gray-900 ">
+    < div className="bg-gray-900 m-0">
             {/*section 1*/}
-            <div  className="w-11/12  m-0">
+            <div  className=" m-0">
       <div className="relative mt-16 mx-auto flex flex-col w-full items-center text-white justify-center ">
       <Link to="/signup">
-        <div className="group mx-16 p-1 rounded-full bg-gray-800 font-bold text-gray-200 transition-all duration-200 hover:scale-95 w-fit border-2 border-gray-500 shadow-lg">
+        <div className="group mx-auto p-1 rounded-full bg-gray-800 font-bold text-gray-200 transition-all duration-200 hover:scale-95 w-fit border-2 border-gray-500 shadow-lg">
           <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-gray-900 group-hover:text-lg">
             <p>Become an Instructor</p>
             <FaLongArrowAltRight />
@@ -118,11 +121,14 @@ backgroundGradient={["bg-[radial-gradient(circle_at_30%_40%,rgba(0,0,240,0.3)_0%
   codeColor="text-yellow-25"
         />
       </div>
-      </div>
-      <div className="bg-white ">
-           
+    
+</div>
+
+      <div className="bg-white">
+      <ExploreMore />
+
       {/*section -(blw 1 and 2)*/}
-      <div className="m-4 p-6 flex flex-row gap-7 mt-8 justify-center">
+      <div className="m-4 p-2 flex flex-row gap-7 mt-7 justify-center">
       <CTAButton active={true} linkto="/signup">
       <div className="flex flex-row items-center gap-1 rounded-full transition-all duration-200 group-hover:bg-gray-900 group-hover:text-md">
       <p> Explore Full Coding </p>
@@ -135,23 +141,32 @@ backgroundGradient={["bg-[radial-gradient(circle_at_30%_40%,rgba(0,0,240,0.3)_0%
       {/*section 2*/}
 
       <div className=" flex  w-[85%] mx-45 " >
-      <div className="text-2xl font-bold w-[34%] items-center  justify-between " >
+      <div className="text-2xl font-bold w-[34%] items-center justify-between " >
       <div>Get the skills you need for a <HighlightText text=" job that is in demand"/> 
       </div>
       </div>
-      <div className=" text-black text-16px w-[45%] ">
+      <div className="w-[5%]" ></div>
+      <div  className=" text-black text-16px w-[54%] ">
       <p>The modern study notion dictates its own terms. Today to be a competitive specialist requires more than professional skills</p>
       <br/><br/>
       <CTAButton active={true} linkto="/signup">Learn more</CTAButton>
       </div>
       </div>
-      <div className=" p-6 flex flex-row gap-7 mt-8 justify-center">
       <TimeLineSection/>
-      <LearningLanguageSection/></div>
-     
-      <h2>Your swiss knife for <HighlightText text={"Your swiss knife for learning any language"}/> </h2>
+      
+      <LearningLanguageSection/>
+
       </div>
-    </div>
+{/*section-3 */}
+      <div className="w-[85%] mx-45  flex-col items-center justify-between gap-8 bg-gray-900 text-white">
+      <InstructorSection/>
+      <h2 className="w-[85%]  mx-15 text-center text-4xl font-semibold mt-10">Reviews from other learners</h2>
+      {/* Review Slider*/}      </div>
+
+      <div className="mx-auto w-[85%] ">      <Footer/>
+      </div>
+      </div>
+
   );
 };
 
